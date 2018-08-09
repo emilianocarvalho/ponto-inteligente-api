@@ -9,37 +9,40 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 
-import com.carvalho.pontointeligente.api.entities.Empresa;
 import com.carvalho.pontointeligente.api.entities.Lancamento;
-import com.carvalho.pontointeligente.api.repositories.EmpresaRepository;
-import com.carvalho.pontointeligente.api.service.EmpresaService;
+import com.carvalho.pontointeligente.api.repositories.LancamentoRepository;
 import com.carvalho.pontointeligente.api.service.LancamentoService;
 
 @Service
 public class LancamentoServiceImpl implements LancamentoService {
 
+    private static final Logger log = LoggerFactory.getLogger(LancamentoServiceImpl.class);
+
+    @Autowired
+    private LancamentoRepository lancamentoRepository;
+
     @Override
     public Page<Lancamento> buscarPorFuncionarioId(Long funcionarioId, PageRequest pageRequest) {
-	// TODO Auto-generated method stub
-	return null;
+	log.info("Buscando lançamentos para o funcionário ID {}", funcionarioId);
+	return this.lancamentoRepository.findByFuncionarioId(funcionarioId, pageRequest);
     }
 
     @Override
     public Optional<Lancamento> buscarPorId(Long id) {
-	// TODO Auto-generated method stub
-	return null;
+	log.info("Buscando um lançamento por Id {}", id);
+	return this.lancamentoRepository.findById(id);
     }
 
     @Override
     public Lancamento persistir(Lancamento lancamento) {
-	// TODO Auto-generated method stub
-	return null;
+	log.info("Persistindo lançamento {}", lancamento);
+	return this.lancamentoRepository.save(lancamento);
     }
 
     @Override
     public void remover(Long id) {
-	// TODO Auto-generated method stub
-	
+	log.info("Removendo lançamento por Id {}", id);
+	this.lancamentoRepository.deleteById(id);
     }
 
 }

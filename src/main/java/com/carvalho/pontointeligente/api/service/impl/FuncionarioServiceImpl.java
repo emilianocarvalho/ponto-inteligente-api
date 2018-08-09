@@ -7,11 +7,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.carvalho.pontointeligente.api.entities.Empresa;
 import com.carvalho.pontointeligente.api.entities.Funcionario;
-import com.carvalho.pontointeligente.api.repositories.EmpresaRepository;
 import com.carvalho.pontointeligente.api.repositories.FuncionarioRepository;
-import com.carvalho.pontointeligente.api.service.EmpresaService;
 import com.carvalho.pontointeligente.api.service.FuncionarioService;
 
 @Service
